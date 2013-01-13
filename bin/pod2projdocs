@@ -7,7 +7,7 @@ use Getopt::Long;
 use Pod::Usage;
 use Pod::ProjectDocs;
 
-my($out, $lib, $title, $lang, $desc, $charset, $index, $verbose, $forcegen, $except);
+my($out, $lib, $title, $lang, $desc, $charset, $index, $verbose, $forcegen, $except, $contents);
 my $help = @ARGV == 0;
 
 my %opt = (
@@ -22,6 +22,7 @@ my %opt = (
     'verbose|v'   => \$verbose,
     'forcegen!'   => \$forcegen,
     'lang=s'      => \$lang,
+    'contents!'    => \$contents,
 );
 
 GetOptions(%opt);
@@ -39,6 +40,7 @@ my $p = Pod::ProjectDocs->new(
     verbose  => $verbose,
     forcegen => $forcegen,
     lang     => $lang,
+    contents => $contents,
 );
 $p->gen;
 
@@ -61,6 +63,7 @@ pod2projdocs [options]
     -forcegen    generate documents each time ignoring last modified timestamp
     -lang        set this language as xml:lang. default 'en'
     -except      set regex, and the file matches this regex won't be checked
+    -nocontents  don't create contents page
 
  you can set each options with their first alphabet.
  for example, you can write -o instead of -out.

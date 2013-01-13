@@ -135,12 +135,15 @@ sub gen {
         }
     }
 
-    my $index_page = Pod::ProjectDocs::IndexPage->new(
-        config     => $self->config,
-        components => $self->components,
-        json       => $self->get_managers_json,
-    );
-    $index_page->publish();
+    if((!defined $self->config->contents) or ($self->config->contents == 1))
+    {
+                my $index_page = Pod::ProjectDocs::IndexPage->new(
+                       config     => $self->config,
+                       components => $self->components,
+                       json       => $self->get_managers_json,
+                );
+                $index_page->publish();
+    }
 }
 
 sub get_managers_json {
