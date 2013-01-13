@@ -225,7 +225,7 @@ sub _addCommand {
                 $self->{buffer} .= qq{<p><a href="#" onclick="toggleCode('method_$method');return false;">[Source]</a></p>
                                         <div class="method-source-code" id="method_$method">
                                         <pre>\n\n};
-                $self->{buffer} .= $self->{_source_code}{$method};
+                $self->{buffer} .= _htmlEscape($self->{_source_code}{$method});
                 $self->{buffer} .= qq{</pre></div>\n\n};
             }
             last;
