@@ -88,7 +88,12 @@ __DATA__
   </table>
 </div>
 <div class="path">
-  <a href="[% outroot _ '/index.html' | relpath %]">[% title | html %]</a> &gt; [% mgr_desc | html %] &gt;
+  [% IF contents == 0 %]
+	[% title | html %]
+  [% ELSE %]
+	<a href="[% outroot _ '/index.html' | relpath %]">[% title | html %]</a>
+  [% END %]
+  &gt; [% mgr_desc | html %] &gt;
   [% name | html %]
 </div>
 <div>

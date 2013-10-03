@@ -725,6 +725,7 @@ sub _get_data {
         outroot  => $doc->config->outroot,
         src      => $doc->get_output_src_path,
         mgr_desc => $mgr_desc,
+        contents => $doc->config->contents,
     });
     return $text if $^O ne 'MSWin32';
 
